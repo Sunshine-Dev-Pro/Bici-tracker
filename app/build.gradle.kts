@@ -6,6 +6,8 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
 }
 
 android {
@@ -107,6 +109,8 @@ dependencies {
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)
     implementation(Libs.Google.material)
+    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
 
     debugImplementation(Libs.Logs.timber)
 

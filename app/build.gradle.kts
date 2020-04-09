@@ -86,11 +86,12 @@ android {
         variant.outputs
             .map { it as BaseVariantOutputImpl }
             .forEach { output ->
-                output.outputFileName = "${variant.productFlavors.first().applicationId}" +
-                        "-v${variant.productFlavors.first().versionName}" +
-                        "_build${variant.productFlavors.first().versionCode}" +
-                        "-${variant.buildType.name}" +
-                        ".apk"
+                output.outputFileName =
+                    "${variant.productFlavors.first().applicationId}" +
+                    "-v${variant.productFlavors.first().versionName}" +
+                    "_build${variant.productFlavors.first().versionCode}" +
+                    "-${variant.buildType.name}" +
+                    ".apk"
             }
     }
 
@@ -109,8 +110,11 @@ dependencies {
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)
     implementation(Libs.Google.material)
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+
+    // Koin
+    implementation(Libs.DI.koinScope)
+    implementation(Libs.DI.koinViewModel)
+    testImplementation(Libs.DI.koinTest)
 
     debugImplementation(Libs.Logs.timber)
 
@@ -118,4 +122,10 @@ dependencies {
 
     androidTestImplementation(Libs.junit)
     androidTestImplementation(Libs.AndroidX.Test.espressoCore)
+
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":device"))
+    implementation(project(":cache"))
+    implementation(project(":remote"))
 }

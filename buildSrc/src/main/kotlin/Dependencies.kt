@@ -11,17 +11,11 @@ object Build {
 
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0-beta04"
-
     const val junit = "junit:junit:4.13"
 
     object Logs {
         private const val version = "4.7.1"
         const val timber = "com.jakewharton.timber:timber:$version"
-    }
-
-    object Navigation {
-        private const val version = "5.1.0"
-        const val cicerone = "ru.terrakok.cicerone:cicerone:$version"
     }
 
     object LeakCanary {
@@ -39,18 +33,6 @@ object Libs {
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
         const val core = "androidx.core:core-ktx:1.2.0"
-    }
-
-    object RxJava {
-        private const val version = "2.2.0"
-        const val rxJava = "io.reactivex.rxjava2:rxjava:2.2.18"
-        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:2.1.1"
-        const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.4.0"
-        const val rxRelay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
-        const val rxBinding = "com.jakewharton.rxbinding3:rxbinding:3.1.0"
-        const val rxBindingCore = "com.jakewharton.rxbinding3:rxbinding-core:3.1.0"
-        const val rxBindingAppCompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0"
-        const val rxBindingMaterial = "com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0"
     }
 
     object AndroidX {
@@ -84,10 +66,6 @@ object Libs {
             const val espressoCore = "androidx.test.espresso:espresso-core:3.2.0"
         }
 
-        const val archCoreTesting = "androidx.arch.core:core-testing:2.1.0"
-
-        const val preference = "androidx.preference:preference:1.1.0"
-
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
 
         const val coreKtx = "androidx.core:core-ktx:1.2.0-rc01"
@@ -104,7 +82,6 @@ object Libs {
             const val runtime = "androidx.room:room-runtime:$version"
             const val compiler = "androidx.room:room-compiler:$version"
             const val ktx = "androidx.room:room-ktx:$version"
-            const val rxjava2 = "androidx.room:room-rxjava2:$version"
             const val gson = "com.google.code.gson:gson:2.8.5"
             const val testing = "androidx.room:room-testing:$version"
         }
@@ -126,5 +103,12 @@ object Libs {
         private const val version = "4.4.0"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
+    }
+
+    object DI {
+        private const val koinVersion = "2.1.1"
+        const val koinScope = "org.koin:koin-androidx-scope:$koinVersion"
+        const val koinViewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
+        const val koinTest = "org.koin:koin-test:$koinVersion"
     }
 }

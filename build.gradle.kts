@@ -1,5 +1,4 @@
 buildscript {
-
     repositories {
         google()
         jcenter()
@@ -8,6 +7,9 @@ buildscript {
     dependencies {
         classpath(Libs.androidGradlePlugin)
         classpath(Libs.Kotlin.gradlePlugin)
+        classpath(Libs.Google.googleServices)
+        classpath(Libs.Firebase.firebaseCrashlyticsGradle)
+        classpath(Libs.AndroidX.Navigation.safeArgs)
     }
 }
 
@@ -15,8 +17,11 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url = uri("https://maven.google.com") }
+        mavenCentral()
         maven {
-            url = uri("https://maven.google.com")
+            url = uri("http://www.idescout.com/maven/repo/")
+            name = ("IDEScout, Inc.")
         }
     }
 }

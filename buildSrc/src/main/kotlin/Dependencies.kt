@@ -22,22 +22,45 @@ object Libs {
         private const val version = "2.2"
         const val android = "com.squareup.leakcanary:leakcanary-android:$version"
     }
+
+    object Firebase {
+        private const val firebaseCoreVersion = "17.2.2"
+        private const val firebasePerfVersion = "19.0.5"
+        private const val firebaseMessagingVersion = "20.1.4"
+        private const val crashlyticsVersion = "2.10.1"
+        private const val analyticsVersion = "17.0.0-beta03"
+        private const val crashlyticsPluginVersion = "2.0.0-beta03"
+
+
+        const val firebaseCore = "com.google.firebase:firebase-core:$firebaseCoreVersion"
+        const val firebasePerformance = "com.google.firebase:firebase-perf:$firebasePerfVersion"
+        const val crashlytics = "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
+        const val firebaseAnalytics = "com.google.firebase:firebase-crashlytics:$analyticsVersion"
+        const val fcm = "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
+        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion"
+    }
+
     object Google {
+        private const val mapVersion = "17.0.0"
+        const val googleMaps = "com.google.android.gms:play-services-maps:$mapVersion"
+
+        private const val playServicesVersion = "4.3.3"
+        const val googleServices =  "com.google.gms:google-services:$playServicesVersion"
+
         const val material = "com.google.android.material:material:1.1.0"
     }
 
     object Kotlin {
         private const val version = "1.3.71"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
-        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
+        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
         const val core = "androidx.core:core-ktx:1.2.0"
     }
 
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.1.0"
-        const val browser = "androidx.browser:browser:1.0.0"
         const val collection = "androidx.collection:collection-ktx:1.1.0"
         const val palette = "androidx.palette:palette:1.0.0"
         const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"

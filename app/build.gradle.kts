@@ -8,6 +8,15 @@ plugins {
     kotlin("kapt")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("com.google.firebase.crashlytics")
+    id("com.google.gms.google-services") apply false
+    id("androidx.navigation.safeargs.kotlin")
+}
+
+repositories {
+    maven("https://maven.google.com")
+    maven("https://jitpack.io")
+    mavenCentral()
 }
 
 android {
@@ -38,9 +47,11 @@ android {
     }
 
     buildTypes {
-        named("debug") {
+        getByName("debug") {
             isDebuggable = true
-            //TODO: firebase off
+            firebaseCrashlytics {
+                mappingFileUploadEnabled = false
+            }
         }
 
         named("release") {
@@ -111,6 +122,19 @@ dependencies {
     implementation(Libs.AndroidX.constraintlayout)
     implementation(Libs.Google.material)
 
+    // Navigation
+    implementation(Libs.AndroidX.Navigation.fragment)
+    implementation(Libs.AndroidX.Navigation.ui)
+
+    // Google Maps
+    implementation(Libs.Google.googleMaps)
+
+    // Firebase
+    implementation(Libs.Firebase.firebaseCore)
+    implementation(Libs.Firebase.firebasePerformance)
+    implementation(Libs.Firebase.firebaseAnalytics)
+    implementation(Libs.Firebase.crashlytics)
+
     // Koin
     implementation(Libs.DI.koinScope)
     implementation(Libs.DI.koinViewModel)
@@ -129,3 +153,5 @@ dependencies {
     implementation(project(":cache"))
     implementation(project(":remote"))
 }
+
+apply(mapOf("plugin" to "com.google.gms.google-services"))

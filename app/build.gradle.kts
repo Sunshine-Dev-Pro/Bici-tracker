@@ -13,6 +13,11 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
+}
+
 repositories {
     maven("https://maven.google.com")
     maven("https://jitpack.io")
@@ -111,6 +116,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     kapt.correctErrorTypes = true
 }
 
@@ -118,13 +127,22 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.Kotlin.stdlib)
     implementation(Libs.Kotlin.core)
+
+    // AndroidX
     implementation(Libs.AndroidX.appcompat)
     implementation(Libs.AndroidX.constraintlayout)
     implementation(Libs.Google.material)
+    implementation(Libs.AndroidX.coreKtx)
+    implementation(Libs.AndroidX.Fragment.fragment)
+    implementation(Libs.AndroidX.Fragment.fragmentKtx)
 
     // Navigation
     implementation(Libs.AndroidX.Navigation.fragment)
     implementation(Libs.AndroidX.Navigation.ui)
+
+    // LiveData
+    implementation(Libs.AndroidX.Lifecycle.viewmodelKtx)
+    implementation(Libs.AndroidX.Lifecycle.extensions)
 
     // Google Maps
     implementation(Libs.Google.googleMaps)
@@ -140,8 +158,10 @@ dependencies {
     implementation(Libs.DI.koinViewModel)
     testImplementation(Libs.DI.koinTest)
 
+    // Logs
     debugImplementation(Libs.Logs.timber)
 
+    // LeakCanary
     debugImplementation(Libs.LeakCanary.android)
 
     androidTestImplementation(Libs.junit)

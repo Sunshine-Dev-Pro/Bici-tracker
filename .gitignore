@@ -10,3 +10,5 @@
 wiki
 !gradle-wrapper.properties
 !gradle.properties
+app/google-services.json
+app/src/main/res/values/keys.xml

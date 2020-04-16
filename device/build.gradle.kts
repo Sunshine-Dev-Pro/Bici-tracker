@@ -1,21 +1,55 @@
 plugins {
-    id("kotlin")
-    id("java-library")
+    id("com.android.library")
+
+    kotlin("android")
+    kotlin("kapt")
+    id("kotlin-android")
 }
 
-sourceSets {
-    getByName("main").java.srcDirs("src/main/kotlin")
+android {
+
+    compileSdkVersion(Build.compileSdk)
+
+    defaultConfig {
+        minSdkVersion(Build.minSdk)
+        targetSdkVersion(Build.compileSdk)
+    }
+
+    buildTypes {
+        named("release") {
+            isMinifyEnabled = true
+
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    sourceSets {
+        getByName("main").java.srcDirs("src/main/kotlin")
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_7
+        targetCompatibility = JavaVersion.VERSION_1_7
+    }
+
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.Kotlin.stdlib)
+    implementation(Libs.Coroutines.android)
+    implementation(Libs.Coroutines.coroutinesPlayServices)
+
+    implementation(Libs.Google.googleLocation)
+
     implementation(Libs.Logs.timber)
 
-    implementation(project(":data"))
-}
+    testImplementation(Libs.Test.junit)
+    testImplementation(Libs.Test.kotlinJUnit)
+    testImplementation(Libs.Test.mockito)
+    testImplementation(Libs.Coroutines.test)
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    implementation(project(":data"))
 }

@@ -13,17 +13,6 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
-kapt {
-    correctErrorTypes = true
-    useBuildCache = true
-}
-
-repositories {
-    maven("https://maven.google.com")
-    maven("https://jitpack.io")
-    mavenCentral()
-}
-
 android {
     compileSdkVersion(Build.compileSdk)
 
@@ -61,7 +50,7 @@ android {
 
         named("release") {
             isDebuggable = false
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             isShrinkResources = false
 
             proguardFiles(
@@ -119,8 +108,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    kapt.correctErrorTypes = true
 }
 
 dependencies {
@@ -135,6 +122,9 @@ dependencies {
     implementation(Libs.AndroidX.coreKtx)
     implementation(Libs.AndroidX.Fragment.fragment)
     implementation(Libs.AndroidX.Fragment.fragmentKtx)
+
+    // Coroutines
+    implementation(Libs.Coroutines.android)
 
     // Navigation
     implementation(Libs.AndroidX.Navigation.fragment)
@@ -164,7 +154,7 @@ dependencies {
     // LeakCanary
     debugImplementation(Libs.LeakCanary.android)
 
-    androidTestImplementation(Libs.junit)
+    androidTestImplementation(Libs.Test.junit)
     androidTestImplementation(Libs.AndroidX.Test.espressoCore)
 
     implementation(project(":domain"))

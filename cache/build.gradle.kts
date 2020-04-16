@@ -7,7 +7,7 @@ sourceSets {
     getByName("main").java.srcDirs("src/main/kotlin")
 }
 
-    dependencies {
+dependencies {
     implementation(Libs.Kotlin.stdlib)
     implementation(Libs.Logs.timber)
 

@@ -1,5 +1,3 @@
-
-
 object Build {
     const val compileSdk = 29
     const val buildTools = "29.0.3"
@@ -11,7 +9,6 @@ object Build {
 
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:4.0.0-beta04"
-    const val junit = "junit:junit:4.13"
 
     object Logs {
         private const val version = "4.7.1"
@@ -37,26 +34,38 @@ object Libs {
         const val crashlytics = "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion"
         const val firebaseAnalytics = "com.google.firebase:firebase-crashlytics:$analyticsVersion"
         const val fcm = "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
-        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion"
+        const val firebaseCrashlyticsGradle =
+            "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsPluginVersion"
     }
 
     object Google {
-        private const val mapVersion = "17.0.0"
-        const val googleMaps = "com.google.android.gms:play-services-maps:$mapVersion"
+        private const val googlePlayServicesVersion = "17.0.0"
+        const val googleMaps = "com.google.android.gms:play-services-maps:$googlePlayServicesVersion"
 
         private const val playServicesVersion = "4.3.3"
-        const val googleServices =  "com.google.gms:google-services:$playServicesVersion"
+        const val googleServices = "com.google.gms:google-services:$playServicesVersion"
+
+        const val googleLocation = "com.google.android.gms:play-services-location:$googlePlayServicesVersion"
 
         const val material = "com.google.android.material:material:1.1.0"
     }
 
     object Kotlin {
-        private const val version = "1.3.71"
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$version"
-        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
-        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
-        const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
+        const val kotlinVersion = "1.3.72"
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+        const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
         const val core = "androidx.core:core-ktx:1.2.0"
+    }
+
+    object Coroutines {
+        private const val version = "1.3.5"
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+        const val rx2 = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$version"
+        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+        const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+        const val coroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"
     }
 
     object AndroidX {
@@ -99,6 +108,12 @@ object Libs {
             const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
         }
 
+        object Paging {
+            private const val version = "2.1.2"
+            const val common = "androidx.paging:paging-common-ktx:$version"
+            const val runtime = "androidx.paging:paging-runtime-ktx:$version"
+        }
+
         object Room {
             private const val version = "2.2.4"
             const val common = "androidx.room:room-common:$version"
@@ -133,5 +148,45 @@ object Libs {
         const val koinScope = "org.koin:koin-androidx-scope:$koinVersion"
         const val koinViewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
         const val koinTest = "org.koin:koin-test:$koinVersion"
+    }
+
+    object Test {
+        private const val jUnitVersion = "4.13"
+        private const val mockitoKotlinVersion = "2.2.0"
+        private const val androidTestRunner = "androidx.test.ext:junit:1.1.1"
+        private const val androidRunner = "androidx.test:runner:1.1.1"
+        private const val espresso = "androidx.test.espresso:espresso-core:3.1.0"
+        private const val androidSupportRunnerVersion = "1.1.1"
+        private const val androidSupportRulesVersion = "1.1.1"
+        private const val robolectricVersion = "3.8"
+
+        const val junit = "junit:junit:$jUnitVersion"
+        const val kotlinJUnit = "org.jetbrains.kotlin:kotlin-test-junit:${Kotlin.kotlinVersion}"
+        const val mockito = "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}"
+
+        // TODO: check this libs for testing
+        /**
+         * unitTesting = [
+        kotlin:             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+        kotlinTest:         "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+        robolectric:        "org.robolectric:robolectric:$robolectric_version",
+        junit:              "junit:junit:$junit_version",
+        mockito:            "com.nhaarman:mockito-kotlin:$mockito_version",
+        mockitoKotlin:      "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version",
+        kluent:             "org.amshove.kluent:kluent:$kluent_version",
+        archCoreTesting:    "androidx.arch.core:core-testing:$lifecycle_version",
+        liveDataTesting:    "com.jraska.livedata:testing-ktx:$live_data_testing_version",
+        coroutineTesting:   "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_testing_version",
+        assertj:            "com.squareup.assertj:assertj-android:1.0.0",
+        androidXTestCore:   "androidx.test:core:$androidx_test_core_version"
+        ]
+
+        testImplementation unitTestDependencies.junit
+        testImplementation unitTestDependencies.kotlinTest
+        testImplementation unitTestDependencies.mockitoKotlin
+        testImplementation unitTestDependencies.coroutineTesting
+        testImplementation unitTestDependencies.liveDataTesting
+        testImplementation unitTestDependencies.archCoreTesting
+         */
     }
 }

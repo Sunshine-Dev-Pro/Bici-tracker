@@ -1,20 +1,25 @@
 package com.sunshine.domain.interactor
 
-import com.sunshine.domain.base.AppCoroutineDispatcher
-import com.sunshine.domain.base.SubjectInteractor
+import com.sunshine.domain.base.AppCoroutineDispatchers
+import com.sunshine.domain.base.ResultInteractor
 import com.sunshine.domain.model.Coord
 import com.sunshine.domain.repository.LocationRepository
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 
 
 class ObserveCurrentLocation(
-    private val locationRepository: LocationRepository,
-    coroutineDispatcher: AppCoroutineDispatcher
-) : SubjectInteractor<Unit, Coord>() {
+    coroutineDispatcher: AppCoroutineDispatchers,
+    private val locationRepository: LocationRepository
+) : ResultInteractor<Unit, Coord>() {
 
-    override val dispatcher: CoroutineDispatcher = coroutineDispatcher.dispatcher
+    override val dispatcher: CoroutineDispatcher = coroutineDispatcher.io
 
-    override fun createObservable(params: Unit): Flow<Coord> =
-        locationRepository.getLocationUpdates()
+//    override fun build(params: Unit): Flow<Coord> =
+//        locationRepository.getLocationUpdates()
+//            .map { it }
+
+    override suspend fun doWork(params: Unit): Coord =
+        locationRepository.getLocationUpdates().first()
+
 }

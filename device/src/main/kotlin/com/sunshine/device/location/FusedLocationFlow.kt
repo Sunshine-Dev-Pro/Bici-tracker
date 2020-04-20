@@ -1,4 +1,4 @@
-package com.sunshine.device
+package com.sunshine.device.location
 
 import android.annotation.SuppressLint
 import android.location.Location

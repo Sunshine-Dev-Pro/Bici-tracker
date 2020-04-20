@@ -6,5 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface LocationRepository {
     fun getLastKnowLocation(): Coord
     fun getLocationUpdates(intervalInMillis: Long = 1000): Flow<Coord>
-    fun getCurrentLocation()
+    // TODO: need to configure like Rx Maybe
+    fun getCurrentLocation(): Flow<Coord>
 }

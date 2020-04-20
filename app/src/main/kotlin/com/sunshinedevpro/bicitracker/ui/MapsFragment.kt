@@ -7,22 +7,23 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.maps.SupportMapFragment
 import com.sunshinedevpro.bicitracker.constant.RequestCodeConstants
 import com.sunshinedevpro.bicitracker.viewmodel.MapViewModel
-import kotlinx.coroutines.flow.collect
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MapsFragment : SupportMapFragment() {
 
-    private val mapViewModel: MapViewModel by sharedViewModel()
+    private val mapViewModel: MapViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         lifecycleScope.launchWhenStarted {
-            mapViewModel.currentLocation.collect {
-                // TODO: show coordinates
-            }
+            mapViewModel
+//                .currentLocation.collect { coord ->
+//                val i = coord
+//            }
         }
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

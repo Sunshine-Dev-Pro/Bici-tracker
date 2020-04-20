@@ -2,8 +2,8 @@ buildscript {
     repositories {
         google()
         jcenter()
-
     }
+
     dependencies {
         classpath(Libs.androidGradlePlugin)
         classpath(Libs.Kotlin.gradlePlugin)

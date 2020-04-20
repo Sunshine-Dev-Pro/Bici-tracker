@@ -1,4 +1,4 @@
-package com.sunshine.device
+package com.sunshine.device.location
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -19,7 +19,8 @@ import android.view.ContextThemeWrapper
  * [AppCtxInitProvider] which is initialized by Android as early as possible when your app's
  * process is created.
  */
-val appCtx: Context get() = internalCtx ?: initAndGetAppCtxWithReflection()
+val appCtx: Context get() = internalCtx
+    ?: initAndGetAppCtxWithReflection()
 
 @SuppressLint("StaticFieldLeak")
 private var internalCtx: Context? = null
